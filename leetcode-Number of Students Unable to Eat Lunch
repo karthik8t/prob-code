@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int countStudents(vector<int>& students, vector<int>& sandwiches) {
+        int i=0,j=0,k,len=students.size();
+        int left=students.size();
+        bool found=false;
+        while(left>0)
+        {
+            for(k=0;k<len;k++)
+            {
+                if(students[k]==-1)
+                {
+                    continue;
+                }
+                if(students[k]==sandwiches[i])
+                {
+                    i++;
+                    students[k]=-1;
+                    left--;
+                    found=true;
+                }
+            }
+            if(found==false)
+            {
+                return left;
+            }
+            found=false;
+        }
+        return left;
+    }
+};
