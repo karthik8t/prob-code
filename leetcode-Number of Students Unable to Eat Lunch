@@ -29,3 +29,28 @@ public:
         return left;
     }
 };
+
+
+//efficient solution
+
+
+class Solution {
+public:
+    int countStudents(vector<int>& students, vector<int>& sandwiches) {
+        int r=0,s=0,i,left;
+        for(i=0;i<students.size();i++) students[i]==0 ? r++ : s++; 
+        for(i=0;i<sandwiches.size();i++)
+        {
+            if(sandwiches[i]==0)
+            {
+                if(r==0) return s;
+                r--;
+            }
+            else{
+                if(s==0) return r;
+                s--;
+            }
+        }
+        return 0;
+    }
+};
